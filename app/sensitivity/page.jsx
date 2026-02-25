@@ -39,15 +39,6 @@ export default function SensitivityPage() {
           { "@type": "HowToStep", name: "Fine-tune", text: "Test the converted sensitivity in-game and adjust slightly based on feel. Compare your eDPI with pro players in that game to see where you fall." },
         ],
       }) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "How do I convert CS2 sensitivity to Valorant?", acceptedAnswer: { "@type": "Answer", text: "Divide your CS2 sensitivity by 3.18 to get the equivalent Valorant sensitivity. For example, CS2 sens 1.0 at 800 DPI = Valorant sens 0.314 at 800 DPI. Both will give you the same cm/360 (the physical distance to do a full turn)." }},
-          { "@type": "Question", name: "What is eDPI and why does it matter?", acceptedAnswer: { "@type": "Answer", text: "eDPI (effective DPI) = Mouse DPI × in-game sensitivity. It normalizes sensitivity across different DPI settings. A player using 400 DPI × 2.0 sens has the same eDPI (800) as someone using 800 DPI × 1.0 sens — they aim at the same speed." }},
-          { "@type": "Question", name: "What is cm/360?", acceptedAnswer: { "@type": "Answer", text: "cm/360 is the number of centimeters you need to move your mouse to do a full 360-degree turn in-game. Lower cm/360 = faster/higher sensitivity. Most CS2 pros use 25-55 cm/360. This is the universal way to compare sensitivity across games." }},
-          { "@type": "Question", name: "What sensitivity do pro players use?", acceptedAnswer: { "@type": "Answer", text: `The average eDPI varies by game. CS2 pros average around 800-900 eDPI, Valorant pros around 250-350 eDPI (using Valorant's scale), and Fortnite pros around 45-65 eDPI (Fortnite's percentage scale). Use our per-game sensitivity pages for detailed breakdowns.` }},
-        ],
-      }) }} />
       <article
         className="absolute overflow-hidden"
         style={{ width: 1, height: 1, padding: 0, margin: -1, clip: "rect(0,0,0,0)", whiteSpace: "nowrap", border: 0 }}

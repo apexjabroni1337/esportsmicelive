@@ -47,16 +47,6 @@ export default function MicePage() {
           item: { "@type": "Product", name: m.name, brand: { "@type": "Brand", name: m.brand }, description: `${m.name} by ${m.brand}. ${m.weight}g ${m.shape.toLowerCase()} mouse with ${m.sensor} sensor. ${m.proUsage}% pro usage.` },
         })),
       }) }} />
-      {/* FAQ schema for mice page */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "What is the best esports mouse in 2025?", acceptedAnswer: { "@type": "Answer", text: `The ${sorted[0].name} is currently the most used mouse among professional esports players with ${sorted[0].proUsage}% pro usage, followed by the ${sorted[1].name} (${sorted[1].proUsage}%) and ${sorted[2].name} (${sorted[2].proUsage}%). The best choice depends on your hand size, grip style, and game.` }},
-          { "@type": "Question", name: "What is the lightest gaming mouse for esports?", acceptedAnswer: { "@type": "Answer", text: `The ${lightest.name} is the lightest esports mouse in our database at just ${lightest.weight}g. Ultralight mice (under 50g) include ${mice.filter(m => m.weight < 50).map(m => m.name).join(", ")}. Most pros prefer mice between 45-65g.` }},
-          { "@type": "Question", name: "Are wireless mice good for esports?", acceptedAnswer: { "@type": "Answer", text: `Yes — ${wirelessCount} of ${mice.length} (${Math.round(wirelessCount/mice.length*100)}%) mice in our pro database are wireless. Modern wireless mice at 4KHz polling have eliminated the latency gap. The vast majority of top esports pros now use wireless mice.` }},
-          { "@type": "Question", name: "How much does a pro esports mouse cost?", acceptedAnswer: { "@type": "Answer", text: `The average price of a pro esports mouse is $${avgPrice}. Prices range from $${cheapest.price} (${cheapest.name}) to $${mostExpensive.price} (${mostExpensive.name}). Most competitive mice fall between $100-$170.` }},
-        ],
-      }) }} />
       <article
         className="absolute overflow-hidden"
         style={{ width: 1, height: 1, padding: 0, margin: -1, clip: "rect(0,0,0,0)", whiteSpace: "nowrap", border: 0 }}

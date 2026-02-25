@@ -110,15 +110,6 @@ export default function ComparisonPage({ params }) {
 
   return (
     <>
-      {/* Comparison JSON-LD */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: `Is the ${a.name} or ${b.name} better for esports?`, acceptedAnswer: { "@type": "Answer", text: `The ${a.name} has ${a.proUsage}% pro usage vs ${b.proUsage}% for the ${b.name}. The ${a.name} weighs ${a.weight}g and costs $${a.price}, while the ${b.name} weighs ${b.weight}g at $${b.price}. ${aWins > bWins ? `The ${a.name} wins in ${aWins} categories` : bWins > aWins ? `The ${b.name} wins in ${bWins} categories` : "They tie overall"} in our head-to-head comparison. The best choice depends on hand size, grip style, and personal preference.` }},
-          { "@type": "Question", name: `${a.name} vs ${b.name} — which is lighter?`, acceptedAnswer: { "@type": "Answer", text: `The ${a.weight < b.weight ? a.name + " is lighter at " + a.weight + "g vs " + b.weight + "g" : b.weight < a.weight ? b.name + " is lighter at " + b.weight + "g vs " + a.weight + "g" : "both weigh the same at " + a.weight + "g"}. ${a.weight < b.weight ? "That's " + (b.weight - a.weight) + "g lighter" : b.weight < a.weight ? "That's " + (a.weight - b.weight) + "g lighter" : ""}.` }},
-          { "@type": "Question", name: `Which mouse do more pros use — ${a.name} or ${b.name}?`, acceptedAnswer: { "@type": "Answer", text: `The ${a.proUsage > b.proUsage ? a.name + " is more popular among pros with " + a.proUsage + "% usage vs " + b.proUsage + "%" : b.name + " is more popular among pros with " + b.proUsage + "% usage vs " + a.proUsage + "%"}. Pro usage is tracked across ${allPlayers.length}+ players in our database.` }},
-        ],
-      }) }} />
       {/* Breadcrumb */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org", "@type": "BreadcrumbList",

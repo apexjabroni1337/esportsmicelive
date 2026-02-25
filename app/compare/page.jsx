@@ -31,14 +31,6 @@ export default function ComparePage() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: `What is the best mouse for esports — ${top10[0].name} or ${top10[1].name}?`, acceptedAnswer: { "@type": "Answer", text: `The ${top10[0].name} has ${top10[0].proUsage}% pro usage vs ${top10[1].proUsage}% for the ${top10[1].name}. The ${top10[0].name} weighs ${top10[0].weight}g ($${top10[0].price}) while the ${top10[1].name} weighs ${top10[1].weight}g ($${top10[1].price}). Both are excellent choices — compare them side by side using our comparison tool to see which matches your preferences.` }},
-          { "@type": "Question", name: "How do I choose between two gaming mice?", acceptedAnswer: { "@type": "Answer", text: `Compare weight (lighter = faster flicks), shape (symmetrical vs ergonomic), sensor quality, polling rate (higher = less input lag), price, and pro player adoption. Our comparison tool lets you compare any two mice from our ${mice.length}-mouse database side by side across all these metrics.` }},
-          { "@type": "Question", name: "Does mouse weight matter for esports?", acceptedAnswer: { "@type": "Answer", text: "Yes — mouse weight significantly impacts aiming feel. Sub-50g ultralight mice allow faster flicks with less fatigue, which most FPS pros prefer. However, some players prefer 60-80g for more controlled, stable tracking. The best weight is personal preference based on your grip style and game." }},
-        ],
-      }) }} />
       <article
         className="absolute overflow-hidden"
         style={{ width: 1, height: 1, padding: 0, margin: -1, clip: "rect(0,0,0,0)", whiteSpace: "nowrap", border: 0 }}

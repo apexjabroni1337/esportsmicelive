@@ -68,14 +68,6 @@ export default function PlayersPage() {
           item: { "@type": "Person", name: p.fullName || p.name, jobTitle: `Professional ${p.game} Player`, memberOf: { "@type": "SportsTeam", name: p.team } },
         })),
       }) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "What DPI do most pro players use?", acceptedAnswer: { "@type": "Answer", text: `The average DPI among ${allPlayers.length}+ pro players is ${avgDpi}. The most common DPI setting is 800, followed by 400 and 1600. However, the effective sensitivity (eDPI = DPI × in-game sens) is what matters most for aiming, and this varies significantly by game.` }},
-          { "@type": "Question", name: "What mouse do CS2 pros use?", acceptedAnswer: { "@type": "Answer", text: `The most popular mouse among CS2 professionals is the ${mostUsedMouse[0]}, used by ${mostUsedMouse[1]} tracked players. Lightweight wireless mice with high polling rates dominate the CS2 pro scene.` }},
-          { "@type": "Question", name: "What eDPI should I use?", acceptedAnswer: { "@type": "Answer", text: `The average eDPI across all pro players is ${avgEdpi}. For CS2/Valorant, most pros use 200-1000 eDPI. For Fortnite, 2000-6000 is typical. For LoL/Dota 2, 3000-15000 is common. Start near the average for your game and adjust based on comfort.` }},
-        ],
-      }) }} />
       <article
         className="absolute overflow-hidden"
         style={{ width: 1, height: 1, padding: 0, margin: -1, clip: "rect(0,0,0,0)", whiteSpace: "nowrap", border: 0 }}

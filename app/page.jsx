@@ -30,41 +30,6 @@ export default function HomePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "What mouse do most pro gamers use?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "The most popular mice among pro gamers include the Razer Viper V3 Pro, Logitech G Pro X Superlight 2, and Razer DeathAdder V3 Pro. Our database tracks the exact mouse used by over 2100 professional players across 13 major esports titles.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What DPI do pro gamers use?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Most professional FPS players use between 400-1600 DPI with in-game sensitivity adjustments. CS2 pros average around 400-800 DPI, while Valorant pros tend to use 800-1600 DPI. The optimal DPI depends on the game, mouse sensor, and personal preference.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "How do I find what mouse a specific pro player uses?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Use our Pro Player Settings page to search for any professional player. We track the mouse, DPI, sensitivity, polling rate, and other settings for over 2100 pro players across CS2, Valorant, League of Legends, Fortnite, and more.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <article
         className="absolute overflow-hidden"
         style={{ width: 1, height: 1, padding: 0, margin: -1, clip: "rect(0,0,0,0)", whiteSpace: "nowrap", border: 0 }}
