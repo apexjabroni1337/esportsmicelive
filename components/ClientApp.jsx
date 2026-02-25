@@ -1317,7 +1317,7 @@ export default function EsportsMice({ initialTab = "overview", initialMouseSlug 
                     <div>
                       <div className="text-xs uppercase tracking-widest font-bold" style={{ color: "#f59e0b" }}>Trending Now</div>
                       <div className="text-sm font-bold" style={{ color: "#ffffffd0" }}>{hotMouse} — used by {hotPct}% of {hotGame} pros</div>
-                      {hm && <div style={{ fontSize: 11, color: "#ffffff30" }}>{hm.weight}g · {hm.sensor} · {hm.connectivity}</div>}
+                      {hm && <div style={{ fontSize: 12, color: "#ffffff30" }}>{hm.weight}g · {hm.sensor} · {hm.connectivity}</div>}
                     </div>
                   </div>
                   <a href={amazonLink(hotMouse)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg font-bold text-sm transition-all hover:scale-105 no-underline flex-shrink-0" style={{ background: "#f59e0b", color: "#000", textDecoration: "none" }}>
