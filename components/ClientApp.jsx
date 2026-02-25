@@ -64,7 +64,7 @@ function AnimatedCounter({ value, duration = 1800, color, suffix = "", prefix = 
 const TAB_ROUTES = {
   overview: "/",
   mice: "/mice",
-  rankings: "/mice",
+  rankings: "/rankings",
   sensors: "/sensors",
   players: "/players",
   games: "/games",
@@ -126,6 +126,27 @@ export default function EsportsMice({ initialTab = "overview", initialMouseSlug 
     } catch {}
     window.scrollTo({ top: 0 });
   }, [activeTab]);
+
+  // Update document title when switching tabs
+  useEffect(() => {
+    const TAB_TITLES = {
+      overview: "EsportsMice — The Definitive Guide to Pro Esports Mice",
+      mice: "All Esports Mice — Complete Database & Rankings | EsportsMice",
+      rankings: "Mouse Rankings — Pro Esports Mouse Tier List | EsportsMice",
+      sensors: "Sensor Database — Compare Gaming Mouse Sensors | EsportsMice",
+      players: "Pro Player Settings — DPI, Sensitivity & Gear | EsportsMice",
+      games: "Esports Games — Mouse Usage by Title | EsportsMice",
+      brands: "Mouse Brands — Compare Razer, Logitech & More | EsportsMice",
+      trends: "Industry Trends — Weight, Wireless & Polling Data | EsportsMice",
+      compare: "Compare Mice — Side-by-Side Specifications | EsportsMice",
+      lab: "Mouse Lab — Find Your Perfect Mouse | EsportsMice",
+      shapes: "Shape Overlay — Compare Mouse Dimensions | EsportsMice",
+      sensitivity: "Sensitivity Converter — Convert Between Games | EsportsMice",
+      teams: "Pro Teams — Esports Team Gear & Settings | EsportsMice",
+    };
+    if (TAB_TITLES[activeTab]) document.title = TAB_TITLES[activeTab];
+  }, [activeTab]);
+
   const [selectedPlayer, setSelectedPlayer] = useState(() => {
     if (initialPlayerSlug) {
       const found = proPlayers.find(p => p.name.toLowerCase().replace(/\+/g, "-plus").replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '') === initialPlayerSlug);
@@ -6430,7 +6451,7 @@ export default function EsportsMice({ initialTab = "overview", initialMouseSlug 
               <div className="space-y-2 text-sm">
                 {[
                   { label: "All Mice", href: "/mice" },
-                  { label: "Mouse Rankings", href: "/mice" },
+                  { label: "Mouse Rankings", href: "/rankings" },
                   { label: "Pro Player Settings", href: "/players" },
                   { label: "Compare Mice", href: "/compare" },
                   { label: "Sensitivity Converter", href: "/sensitivity" },
