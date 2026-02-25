@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts loaded via layout.jsx <link> tag for better performance */
+
+:root {
+  --green: #00ff6a;
+  --blue: #00b4ff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000;
+  color: #e0e0e0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ffffff15; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #ffffff30; }
+
+/* Recharts overrides */
+.recharts-wrapper text { fill: #ffffff80 !important; font-size: 12px; }
+.recharts-polar-angle-axis-tick text { font-size: 11px !important; }
+
+/* ══════════════════════════════════════════════════════
+   TEXT SIZE BUMP (+1px) — delete this entire block to revert
+   ══════════════════════════════════════════════════════ */
+.text-xs { font-size: 13px !important; line-height: 1.25rem; }
+.text-sm { font-size: 15px !important; line-height: 1.4rem; }
+/* Keep nav/menu at original sizes */
+nav .text-xs, nav .text-sm, nav .text-base { font-size: revert !important; }
+nav .text-xs { font-size: 0.75rem !important; }
+nav .text-sm { font-size: 0.875rem !important; }
+/* Keep graph/chart text at original sizes */
+.recharts-wrapper .text-xs, .recharts-wrapper .text-sm { font-size: revert !important; }
+.recharts-wrapper .text-xs { font-size: 0.75rem !important; }
+.recharts-wrapper .text-sm { font-size: 0.875rem !important; }
+/* ══════════════════════════════════════════════════════ */
+
+/* Performance: reduce paint on scroll */
+img, svg {
+  content-visibility: auto;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduce layout shift on images */
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Common component styles to reduce inline style objects */
+.em-card { background: #0a0a0a; border: 1px solid #ffffff08; }
+.em-card-hover:hover { background: #0f0f0f !important; }
+.em-bg-subtle { background: #ffffff06; }
+.em-bg-subtle2 { background: #ffffff04; }
+.em-bg-subtle3 { background: #ffffff08; }
+.em-text-muted { color: #ffffff30; }
+.em-text-muted2 { color: #ffffffd0; }
+.em-text-amber { color: #f59e0b; }
+.em-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #ffffff40; }
+.em-fs-10 { font-size: 10px; }
+.em-fs-11 { font-size: 11px; }
+.em-fs-12 { font-size: 12px; }
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

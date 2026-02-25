@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --green: #00ff6a;
+  --blue: #00b4ff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000;
+  color: #e0e0e0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ffffff15; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #ffffff30; }
+
+/* Recharts overrides */
+.recharts-wrapper text { fill: #ffffff80 !important; font-size: 12px; }
+.recharts-polar-angle-axis-tick text { font-size: 11px !important; }
+
+/* ══════════════════════════════════════════════════════
+   TEXT SIZE BUMP (+1px) — delete this entire block to revert
+   ══════════════════════════════════════════════════════ */
+.text-xs { font-size: 13px !important; line-height: 1.25rem; }
+.text-sm { font-size: 15px !important; line-height: 1.4rem; }
+/* Keep nav/menu at original sizes */
+nav .text-xs, nav .text-sm, nav .text-base { font-size: revert !important; }
+nav .text-xs { font-size: 0.75rem !important; }
+nav .text-sm { font-size: 0.875rem !important; }
+/* Keep graph/chart text at original sizes */
+.recharts-wrapper .text-xs, .recharts-wrapper .text-sm { font-size: revert !important; }
+.recharts-wrapper .text-xs { font-size: 0.75rem !important; }
+.recharts-wrapper .text-sm { font-size: 0.875rem !important; }
+/* ══════════════════════════════════════════════════════ */
