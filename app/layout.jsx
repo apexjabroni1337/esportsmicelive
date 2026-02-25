@@ -103,37 +103,6 @@ export default function RootLayout({ children }) {
                 sameAs: [],
                 description: "The definitive database for professional esports mice, pro player settings, and gaming peripheral data.",
               },
-              {
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                mainEntity: [
-                  {
-                    "@type": "Question",
-                    name: "What mouse do most pro esports players use?",
-                    acceptedAnswer: { "@type": "Answer", text: "The Razer Viper V3 Pro is the most popular mouse among professional esports players in 2025-2026, used across CS2, Valorant, Fortnite, and other titles. The Logitech G Pro X Superlight 2 is the second most popular choice." },
-                  },
-                  {
-                    "@type": "Question",
-                    name: "What DPI do pro players use?",
-                    acceptedAnswer: { "@type": "Answer", text: "Most professional esports players use between 400 and 800 DPI. 800 DPI is the most common setting, followed by 400 DPI. The actual aiming speed is determined by eDPI (DPI × in-game sensitivity), which varies significantly by game." },
-                  },
-                  {
-                    "@type": "Question",
-                    name: "What mouse does s1mple use?",
-                    acceptedAnswer: { "@type": "Answer", text: "s1mple, widely regarded as the greatest CS player of all time, has used various mice throughout his career. Check his full profile on EsportsMice for his current mouse, DPI, sensitivity, and complete gear setup." },
-                  },
-                  {
-                    "@type": "Question",
-                    name: "Is a lighter mouse better for gaming?",
-                    acceptedAnswer: { "@type": "Answer", text: "Lighter mice (under 60g) are preferred by most professional FPS players because they allow faster flick aiming and reduce wrist fatigue. However, some players prefer medium-weight mice (65-80g) for more controlled, stable aim. The best weight depends on your grip style and game." },
-                  },
-                  {
-                    "@type": "Question",
-                    name: "What polling rate do pros use?",
-                    acceptedAnswer: { "@type": "Answer", text: "In 2025, 4KHz (4000Hz) polling is the most common among pros, with 8KHz (8000Hz) gaining adoption. Higher polling rates reduce input delay and provide smoother cursor movement, which matters at the highest levels of competitive play." },
-                  },
-                ],
-              },
             ]),
           }}
         />
