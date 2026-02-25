@@ -2,7 +2,13 @@ import React from "react";
 
 // Amazon Affiliate Helper — change tag here to update all links sitewide
 export const AMAZON_TAG = "esportsmice-20";
-export const amazonLink = (searchTerm) => `https://www.amazon.com/s?k=${encodeURIComponent(searchTerm)}&tag=${AMAZON_TAG}`;
+// Non-mouse products that shouldn't get "gaming mouse" appended
+const NOT_MICE = new Set(["Unknown", "Alienware AW2725DF", "RTX 4070 Ti Super", "HyperX Cloud Alpha", "HyperX Fury S Pro", "HyperX Fury S Speed Edition", "Wooting 80HE", "Wooting 80HE Frost"]);
+export const amazonLink = (searchTerm) => {
+  if (!searchTerm || searchTerm === "Unknown") return `https://www.amazon.com/s?k=${encodeURIComponent("gaming mouse")}&tag=${AMAZON_TAG}`;
+  const suffix = NOT_MICE.has(searchTerm) ? "" : " gaming mouse";
+  return `https://www.amazon.com/s?k=${encodeURIComponent(searchTerm + suffix)}&tag=${AMAZON_TAG}`;
+};
 
 const FLAG_TO_CODE = {"🇦🇱":"al","🇦🇲":"am","🇦🇷":"ar","🇦🇹":"at","🇦🇺":"au","🇧🇦":"ba","🇧🇪":"be","🇧🇬":"bg","🇧🇷":"br","🇧🇾":"by","🇨🇦":"ca","🇨🇭":"ch","🇨🇱":"cl","🇨🇳":"cn","🇨🇿":"cz","🇩🇪":"de","🇩🇰":"dk","🇩🇴":"do","🇪🇪":"ee","🇪🇬":"eg","🇪🇸":"es","🇫🇮":"fi","🇫🇷":"fr","🇬🇧":"gb","🇬🇪":"ge","🇬🇷":"gr","🇬🇹":"gt","🇭🇰":"hk","🇭🇷":"hr","🇭🇺":"hu","🇮🇩":"id","🇮🇱":"il","🇮🇳":"in","🇮🇶":"iq","🇮🇹":"it","🇯🇴":"jo","🇯🇵":"jp","🇰🇭":"kh","🇰🇷":"kr","🇰🇿":"kz","🇱🇧":"lb","🇱🇹":"lt","🇱🇺":"lu","🇱🇻":"lv","🇲🇦":"ma","🇲🇩":"md","🇲🇪":"me","🇲🇰":"mk","🇲🇳":"mn","🇲🇽":"mx","🇲🇾":"my","🇳🇱":"nl","🇳🇴":"no","🇳🇿":"nz","🇵🇪":"pe","🇵🇭":"ph","🇵🇱":"pl","🇵🇸":"ps","🇵🇹":"pt","🇷🇴":"ro","🇷🇸":"rs","🇷🇺":"ru","🇸🇦":"sa","🇸🇪":"se","🇸🇬":"sg","🇸🇮":"si","🇸🇰":"sk","🇹🇭":"th","🇹🇷":"tr","🇹🇼":"tw","🇺🇦":"ua","🇺🇸":"us","🇺🇾":"uy","🇻🇳":"vn","🇽🇰":"xk","🇿🇦":"za"};
 export const flagCode = (emoji) => FLAG_TO_CODE[emoji] || null;
