@@ -13,6 +13,68 @@ const GAME_COLORS = { CS2: "#ff8c00", Valorant: "#ff4655", "League of Legends": 
 
 const shuffle = (arr) => { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
+/* ─── Player Avatar: generates a unique avatar from player name + game color ─── */
+function PlayerAvatar({ name, game, size = 48, className = "" }) {
+  const gc = GAME_COLORS[game] || "#888";
+  // Generate deterministic hue shift from name for uniqueness
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  const hueShift = Math.abs(hash % 40) - 20; // -20 to +20 degree shift
+  const satShift = Math.abs((hash >> 8) % 20); // 0-20% saturation variation
+  // Get initials (handle tags like s1mple, ZywOo, etc.)
+  const clean = name.replace(/[^a-zA-Z0-9 ]/g, "");
+  const parts = clean.split(/(?=[A-Z0-9])|[\s]+/).filter(Boolean);
+  const initials = parts.length >= 2
+    ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+    : clean.slice(0, 2).toUpperCase();
+  // Generate gradient colors from game color
+  const r = parseInt(gc.slice(1, 3), 16), g = parseInt(gc.slice(3, 5), 16), b = parseInt(gc.slice(5, 7), 16);
+  const darken = (v, f) => Math.max(0, Math.min(255, Math.round(v * f)));
+  const c1 = `rgb(${darken(r, 0.35)},${darken(g, 0.35)},${darken(b, 0.35)})`;
+  const c2 = `rgb(${darken(r, 0.15)},${darken(g, 0.15)},${darken(b, 0.15)})`;
+  const accent = `rgb(${darken(r, 0.7)},${darken(g, 0.7)},${darken(b, 0.7)})`;
+  const fontSize = size < 32 ? size * 0.4 : size * 0.36;
+  const isTop = TOP250.has(name);
+  return (
+    <div className={`relative flex-shrink-0 ${className}`} style={{ width: size, height: size }}>
+      <div
+        className="w-full h-full rounded-full flex items-center justify-center overflow-hidden"
+        style={{
+          background: `linear-gradient(135deg, ${c1}, ${c2})`,
+          border: `2px solid ${accent}`,
+          boxShadow: isTop ? `0 0 ${size/4}px ${gc}30, inset 0 -${size/6}px ${size/3}px ${gc}10` : `inset 0 -${size/6}px ${size/3}px rgba(0,0,0,0.3)`,
+        }}
+      >
+        <span
+          className="font-black select-none"
+          style={{
+            fontSize,
+            fontFamily: "Orbitron, sans-serif",
+            color: gc,
+            opacity: 0.9,
+            textShadow: `0 0 ${size/6}px ${gc}40`,
+            letterSpacing: size > 40 ? 1 : 0,
+          }}
+        >
+          {initials}
+        </span>
+      </div>
+      {isTop && (
+        <div className="absolute -bottom-0.5 -right-0.5 rounded-full flex items-center justify-center"
+          style={{
+            width: size * 0.3,
+            height: size * 0.3,
+            background: `linear-gradient(135deg, ${gc}, ${gc}cc)`,
+            border: `1.5px solid #0a0a0a`,
+            boxShadow: `0 0 4px ${gc}60`,
+          }}>
+          <span style={{ fontSize: size * 0.15, lineHeight: 1 }}>⭐</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ─── Animated Counter: counts up from 0 when scrolled into view ─── */
 function AnimatedCounter({ value, duration = 1800, color, suffix = "", prefix = "", className = "", style = {} }) {
   const [display, setDisplay] = useState("0");
@@ -1092,8 +1154,8 @@ export default function EsportsMice({ initialTab = "overview", initialMouseSlug 
                               <button key={i} onClick={() => { const pp = proPlayers.find(pp => pp.name === p.name); if (pp) { navigateToPlayer(pp); } else { setActiveTab("players"); } }}
                                 className="w-full flex items-center gap-3 p-2.5 rounded-xl cursor-pointer transition-all hover:scale-[1.02] text-left"
                                 style={{ background: `${gc}08`, border: `1px solid ${gc}15` }}>
-                                <div className="w-10 h-10 rounded-lg flex items-center justify-center text-lg flex-shrink-0" style={{ background: `${gc}15` }}>
-                                  <Flag country={p.country} size={16} />
+                                <div className="relative flex-shrink-0">
+                                  <PlayerAvatar name={p.name} game={p.game} size={40} />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <div className="text-sm font-black">{p.name}</div>
@@ -3030,7 +3092,10 @@ export default function EsportsMice({ initialTab = "overview", initialMouseSlug 
               {/* Header */}
               <div className="rounded-2xl p-4 sm:p-8 mb-4 sm:mb-6" style={{ background: `linear-gradient(135deg, ${gc}10, #0a0a0a)`, border: `1px solid ${gc}25` }}>
                 <div className="flex flex-col gap-3 sm:gap-6 items-start">
-                  <div className="flex items-center justify-center"><Flag country={p.country} size={56} /></div>
+                  <div className="flex items-center gap-4">
+                    <PlayerAvatar name={p.name} game={p.game} size={72} />
+                    <div className="flex items-center justify-center"><Flag country={p.country} size={56} /></div>
+                  </div>
                   <div className="flex-1 w-full">
                     <div className="text-sm uppercase tracking-widest opacity-30 mb-1">{p.role} · {p.team}</div>
                     <h2 className="text-2xl sm:text-4xl font-black mb-1" style={{ fontFamily: "Orbitron", color: gc }}>{p.name}</h2>
@@ -3408,6 +3473,7 @@ export default function EsportsMice({ initialTab = "overview", initialMouseSlug 
                         <td className="pl-3 pr-1 py-2.5 text-center">{p.hasProfile ? <span title="Full profile available" className="inline-flex" style={{ filter: `drop-shadow(0 0 4px ${gc}60)` }}>{I.star(14)}</span> : <span className="opacity-10">·</span>}</td>
                         <td className="px-2 py-2.5 whitespace-nowrap">
                           <div className="flex items-center gap-2">
+                            <PlayerAvatar name={p.name} game={p.game} size={28} />
                             <Flag country={p.country} size={18} className="flex-shrink-0" />
                             <div>
                               <div className="text-sm font-black text-white leading-tight">{p.name}</div>
